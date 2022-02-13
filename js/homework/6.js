@@ -1,6 +1,7 @@
-function makeStar2(n) {
+
+function makeStar(n) {
     let box = "";
-    for(let i = n; i > 0; i--) {
+    for(let i = 1; i <= n; i++) {
         for(let j = i; j <= n; j++) {
             box += "*";
         }
@@ -8,4 +9,4 @@ function makeStar2(n) {
     }
     console.log(box);
 }
-makeStar2(5);
+makeStar(5);
