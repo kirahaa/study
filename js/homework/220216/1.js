@@ -1,7 +1,7 @@
 function countAlphabet(word) {
-    let w = word.toUpperCase().split('');
+    let wordArr = word.toUpperCase().split('');
     let result = "?";
-    let countWord = w.reduce(function (count, alphabet) {
+    let countWord = wordArr.reduce(function (count, alphabet) {
         if (alphabet in count) {
             count[alphabet]++;
         } else {
@@ -10,7 +10,7 @@ function countAlphabet(word) {
         return count;
     }, {});
     let arr = Object.values(countWord);
-    let max = Math.max(...arr);
+    let max = Math.max.apply(null, arr);
     let counts = 0;
     for(let keys in countWord) {
         if(countWord[keys] === max) {
@@ -23,7 +23,6 @@ function countAlphabet(word) {
     } else {
         console.log("?");
     }
-
 }
 
 // countAlphabet("mississipi");
