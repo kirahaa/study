@@ -8,29 +8,30 @@
     "type": "module",
     "scripts": {
         "dev": "gulp dev",
-        "build": "gulp build"
+        "build": "gulp build",
+        "deploy": "gulp deploy"
     },
     "devDependencies": {
         "@babel/core": "^7.17.5",
         "@babel/preset-env": "^7.16.11",
         "@babel/register": "^7.17.0",
+        "babelify": "^10.0.0",
         "del": "^6.0.0",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^8.0.0",
+        "gulp-bro": "^2.0.0",
+        "gulp-csso": "^4.0.1",
         "gulp-image": "^6.3.1",
         "gulp-pug": "^5.0.0",
         "gulp-sass": "^5.1.0",
         "gulp-webserver": "^0.9.1",
         "node-sass": "^7.0.1",
         "sass": "^1.49.8",
-        "gulp-bro": "^2.0.0",
-        "gulp-csso": "^4.0.1",
-        "uglifyify": "^5.0.2",
-        "babelify": "^10.0.0"
+        "uglifyify": "^5.0.2"
     },
     "dependencies": {
-
         "esm": "^3.2.25",
+        "gulp-gh-pages": "^0.5.4",
         "upgrade": "^1.1.0"
     },
     "browserslist": [
