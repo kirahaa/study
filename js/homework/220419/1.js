@@ -1,32 +1,22 @@
-const readline = require('readline');
+const args = process.argv;
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-rl.on("line", function (line) {
-    let N = line.split(' ');
-    switch (N[1]) {
-        case '':
-            console.log('실행 인자를 입력해 주세요\n예) {N} {연산자} {N}');
-            break;
-        case '+':
-            console.log(Number(N[0]) + Number(N[2]));
-            break;
-        case '-':
-            console.log(Number(N[0]) - Number(N[2]));
-            break;
-        case '*':
-            console.log(Number(N[0]) * Number(N[2]));
-            break;
-        case '/':
-            console.log(Number(N[0]) / Number(N[2]));
-            break;
-        case '%':
-            console.log(Number(N[0]) % Number(N[2]));
-            break;
-    }
-
-    rl.close();
-})
+switch (args[3]) {
+    case undefined:
+        console.log('실행 인자를 입력해 주세요\n예) {N} {연산자} {N}');
+        break;
+    case '+':
+        console.log(Number(args[2]) + Number(args[4]));
+        break;
+    case '-':
+        console.log(Number(args[2]) - Number(args[4]));
+        break;
+    case '*':
+        console.log(Number(args[2]) * Number(args[4]));
+        break;
+    case '/':
+        console.log(Number(args[2]) / Number(args[4]));
+        break;
+    case '%':
+        console.log(Number(args[2]) % Number(args[4]));
+        break;
+}
