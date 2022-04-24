@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function show(data) {
+            console.log('name: ' + data.name);
+            console.log('price: ' + data.price);
+        }
+        window.onload = function () {
+            let url = 'jsonp.js';
+            let script = document.createElement('script');
+            script.setAttribute('src', url);
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

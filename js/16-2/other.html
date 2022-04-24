@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>도메인이 다른 페이지</title>
+    <script>
+        window.onload = function () {
+            let result = document.getElementById('display');
+            window.addEventListener('message', function (e) {
+                // 같은 출처를 사용하게 만든다('/'는 사용할 수 없음)
+                let sourceOrigin = location.origin; // 현재 페이지의 origin인가
+                console.log(sourceOrigin, e.origin);  // e.origin은 메시지를 보낸 페이지껀가?
+                // 메시지를 보낸 사이트 출처가 이 사이트의 출처와 같은지 확인한다
+                if(e.origin !== sourceOrigin) return;
+                result.textContent = e.data;
+            }, false);
+        }
+    </script>
+</head>
+<body>
+    <div id="display"></div>
+</body>
+</html>
