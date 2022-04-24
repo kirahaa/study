@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>간단한 Ajax 예제</title>
+    <script>
+        window.onload = function() {
+            // XMLHttpRequest 객체를 생성한다
+            let req = new XMLHttpRequest();
+            // 서버와 통신할 때 사용할 처리 방법을 등록한다
+
+            // req.addEventListener('load', function() {
+            //     document.getElementById('view').innerHTML = req.responseText;
+            // }, false);
+
+            // 통신 중임을 알리는
+            req.addEventListener('loadstart', function () {
+                document.getElementById('view').innerHTML = "통신 중";
+            }, false);
+
+            // 서버 오류
+            req.addEventListener('error', function () {
+                document.getElementById('view').innerHTML = "서버 오류가 발생했습니다";
+            })
+
+            req.onreadystatechange = function () {
+                if(req.readyState == 4) {
+                    if(req.status == 200) {
+                        document.getElementById('view').innerHTML = req.responseText;
+                    }
+                }
+            };
+            // 요청을 전송하고 통신을 시작한다
+            req.open("GET", "data.txt");
+            req.send(null);
+        }
+    </script>
+</head>
+<body>
+    <p id="view"></p>
+</body>
+</html>
