@@ -2,5 +2,8 @@
   "dependencies": {
     "gulp-sass": "^5.1.0",
     "node-sass": "^7.0.1"
+  },
+  "devDependencies": {
+    "axios": "^0.27.2"
   }
 }
