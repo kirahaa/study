@@ -13,28 +13,146 @@
 <script>
     const $body = document.body;
 
+    const $arr = [
+        "Vuejs 스터디 목록",
+        "MDN Webdoc 표준과 Virtual DOM",
+        "Vuejs 설치 및 프로젝트 생성",
+        "Vuejs 프로젝트의 구성과 라우팅",
+        "컴포넌트, Props, Model",
+        "Slot, 동적 컴포넌트",
+        "뷰의 라이프 사이클",
+        "Vue의 상태관리 (1)",
+        "Vue의 상태관리 (2)",
+        "TodoList 프로젝트 리뷰",
+        "Axios를 통한 backend api 호출"
+    ]
+
+    const $teamInfo = [
+        {
+            name: "이름",
+            age: "나이",
+            sex: "성별",
+            position: "직급",
+        },
+        {
+            name: "정주호",
+            age: 34,
+            sex: "남자",
+            position: "대리",
+        },
+        {
+            name: "김유빈",
+            age: 32,
+            sex: "여자",
+            position: "대리",
+        },
+        {
+            name: "오수현",
+            age: 28,
+            sex: "여자",
+            position: "대리",
+        },
+        {
+            name: "김경식",
+            age: 29,
+            sex: "남자",
+            position: "주임",
+        },
+        {
+            name: "이희재",
+            age: 28,
+            sex: "여자",
+            position: "주임",
+        },
+        {
+            name: "송민섭",
+            age: 30,
+            sex: "남자",
+            position: "사원",
+        },
+        {
+            name: "김하영",
+            age: 26,
+            sex: "여자",
+            position: "사원",
+        }
+    ]
+
     function section1() {
         let $h1 = document.createElement('h1');
         let $ul = document.createElement('ul');
-        let $title = 'Vuejs 스터디 목록';
+        let $txt, $li;
 
+        $arr.map( (data, i) => {
+            $txt = document.createTextNode(data);
+            $li = document.createElement('li');
 
-        $body.append($ul);
+            if(i > 0) {
+                $li.append($txt);
+                $ul.append($li);
+            }
+        })
+
+        $h1.append($arr[0]);
+        $body.append($h1, $ul);
     }
 
     function section2() {
         let $table = document.createElement('table');
+        let $tr = document.createElement('tr');
+        let $td0, $td1, $td2, $td3;
 
+        $teamInfo.map( (data, i) => {
+            //
+            $td0 = document.createElement('td');
+            $td1 = document.createElement('td');
+            $td2 = document.createElement('td');
+            $td3 = document.createElement('td');
+            //
+            $tr = document.createElement('tr');
+
+            $td0.append(data.name);
+            $td1.append(data.age);
+            $td2.append(data.sex);
+            $td3.append(data.position);
+            $tr.append($td0, $td1, $td2, $td3);
+            $table.append($tr);
+        });
+
+
+        console.log($table);
+
+        $table.style.cssText = 'border: 1px solid #000;';
         $body.append($table);
     }
 
     function section3() {
         let $button = document.createElement('button');
+        let $btnText = document.createTextNode('클릭');
         let $modal = document.createElement('div');
+        let $modalText = document.createTextNode('디자인 모달 팝업');
+        let $modalBtn = document.createElement('button');
+        let $modalBtnText = document.createTextNode('닫기');
+
+
+        $button.append($btnText);
+        $modalBtn.append($modalBtnText);
+        $modal.append($modalText);
+        $modal.append($modalBtn);
+        $body.append($button);
+        $body.append($modal);
 
         $button.addEventListener('click', function() {
-
+            $modal.style.display = 'flex';
         })
+        $modalBtn.addEventListener('click', function () {
+            $modal.style.display = 'none';
+        })
+        $modal.style.cssText = `display:none; flex-direction: column; justify-content: space-between; position: relative; left: 300px; padding: 60px 95px; width: 300px; height: 200px; box-sizing: border-box; text-align: center; border: 1px solid #000; border-radius: 10px;`;
     }
+
+    section1();
+    section2();
+    section3();
 </script>
 </html>
