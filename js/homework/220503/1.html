@@ -99,29 +99,23 @@
 
     function section2() {
         let $table = document.createElement('table');
-        let $tr, $td0, $td1, $td2, $td3;
+        let $tr, $td;
 
         $teamInfo.map( (data, i) => {
-            //
-            $td0 = document.createElement('td');
-            $td1 = document.createElement('td');
-            $td2 = document.createElement('td');
-            $td3 = document.createElement('td');
-            //
+
             $tr = document.createElement('tr');
 
-            $td0.append(data.name);
-            $td1.append(data.age);
-            $td2.append(data.sex);
-            $td3.append(data.position);
-            $tr.append($td0, $td1, $td2, $td3);
+           Object.keys(data).forEach(function (a, b, c) {
+               $td = document.createElement('td');
+               $td.style.cssText = 'border: 1px solid #000; text-align: center; padding: 5px 10px;'
+               $td.append(data[a]);
+               $tr.append($td);
+           })
+
             $table.append($tr);
         });
 
-
-        console.log($table);
-
-        $table.style.cssText = 'border: 1px solid #000;';
+        $table.style.cssText = 'border-collapse: collapse; margin-bottom: 20px;';
         $body.append($table);
     }
 
@@ -132,7 +126,6 @@
         let $modalText = document.createTextNode('디자인 모달 팝업');
         let $modalBtn = document.createElement('button');
         let $modalBtnText = document.createTextNode('닫기');
-
 
         $button.append($btnText);
         $modalBtn.append($modalBtnText);
