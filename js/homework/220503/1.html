@@ -13,7 +13,7 @@
 <script>
     const $body = document.body;
 
-    const $arr = [
+    const arr = [
         "Vuejs 스터디 목록",
         "MDN Webdoc 표준과 Virtual DOM",
         "Vuejs 설치 및 프로젝트 생성",
@@ -27,7 +27,7 @@
         "Axios를 통한 backend api 호출"
     ]
 
-    const $teamInfo = [
+    const teamInfo = [
         {
             name: "이름",
             age: "나이",
@@ -81,14 +81,13 @@
     function section1() {
         let $h1 = document.createElement('h1');
         let $ul = document.createElement('ul');
-        let $txt, $li;
+        let $li;
 
-        $arr.map( (data, i) => {
-            $txt = document.createTextNode(data);
+        arr.map( (data, i) => {
             $li = document.createElement('li');
 
             if(i > 0) {
-                $li.append($txt);
+                $li.append(data);
                 $ul.append($li);
             }
         })
@@ -101,16 +100,16 @@
         let $table = document.createElement('table');
         let $tr, $td;
 
-        $teamInfo.map( (data, i) => {
+        teamInfo.map( (data) => {
 
             $tr = document.createElement('tr');
 
-           Object.keys(data).forEach(function (a, b, c) {
-               $td = document.createElement('td');
-               $td.style.cssText = 'border: 1px solid #000; text-align: center; padding: 5px 10px;';
-               $td.append(data[a]);
-               $tr.append($td);
-           })
+            Object.keys(data).forEach(function (a) {
+                $td = document.createElement('td');
+                $td.style.cssText = 'border: 1px solid #000; text-align: center; padding: 5px 10px;';
+                $td.append(data[a]);
+                $tr.append($td);
+            })
 
             $table.append($tr);
         });
@@ -121,15 +120,12 @@
 
     function section3() {
         let $button = document.createElement('button');
-        let $btnText = document.createTextNode('클릭');
         let $modal = document.createElement('div');
-        let $modalText = document.createTextNode('디자인 모달 팝업');
         let $modalBtn = document.createElement('button');
-        let $modalBtnText = document.createTextNode('닫기');
 
-        $button.append($btnText);
-        $modalBtn.append($modalBtnText);
-        $modal.append($modalText);
+        $button.append('클릭');
+        $modalBtn.append('닫기');
+        $modal.append('디자인 모달 팝업');
         $modal.append($modalBtn);
         $body.append($button);
         $body.append($modal);
