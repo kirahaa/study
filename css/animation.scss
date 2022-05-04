@@ -1,0 +1,34 @@
+.animation {
+  animation: name alternate 0.8s infinite;
+  -webkit-animation: name alternate 0.8s infinite;
+  -moz-animation: name alternate 0.8s infinite;
+  -o-animation: name alternate 0.8s infinite;
+}
+
+// [D] 애니메이션 예시
+// animation.zip
+
+// animation: name duration timing-function delay option;
+// -webkit-animation: name duration timing-function delay option;
+// -moz-animation: name duration timing-function delay option;
+// -o-animation: name duration timing-function delay option;
+
+// @keyframes name {
+//    from    {}
+//    to      {}
+// }
+//
+// @-webkit-keyframes name {
+//    from    {}
+//    to      {}
+// }
+//
+// @-moz-keyframes name {
+//    from    {}
+//    to      {}
+// }
+//
+// @-o-keyframes name {
+//    from    {}
+//    to      {}
+// }
