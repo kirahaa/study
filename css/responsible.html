@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>반응형 계산기</title>
+</head>
+<body>
+<div class="reactive">
+    <div class="reactive__fieldset">
+        <div class="reactive__field" data-field="percentage">
+            <p class="reactive__title">1️⃣ percentage</p>
+            <p class="reactive__desc">e.g., position, width, height...</p>
+            <div class="reactive__forms">
+                <div class="reactive__form">
+                    <label for="percentage-standard" class="reactive__label">기준값 <span class="-delete">e.g, 1440, 750px...</span></label>
+                    <input type="number" id="percentage-standard" class="reactive__input" data-value="standard" />
+                </div>
+                <div class="reactive__form">
+                    <label for="percentage-element" class="reactive__label">요소값</label>
+                    <input type="number" id="percentage-element" class="reactive__input" data-value="element" />
+                </div>
+                <button type="button" class="reactive__button">계산하기</button>
+            </div>
+            <div class="reactive__result">
+                <span class="-offscreen">계산 결과&nbsp;</span>
+                <span class="reactive__value" data-value="result">n</span>
+                <span class="percentage__unit">%</span>
+            </div>
+        </div>
+        <div class="reactive__field" data-field="rem">
+            <p class="reactive__title">2️⃣ root element</p>
+            <p class="reactive__desc">e.g., @media ( min || max standard ) { <span class="-em -point">value</span> }</p>
+            <div class="reactive__forms">
+                <div class="reactive__form">
+                    <label for="rem-standard" class="reactive__label">기준값 <span class="-delete">e.g, 1440, 750px...</span></label>
+                    <input type="number" id="rem-standard" class="reactive__input" data-value="standard" />
+                </div>
+                <div class="reactive__form">
+                    <label for="rem-default" class="reactive__label">기본값 <span class="-delete">e.g, 10px</span></label>
+                    <input type="number" id="rem-default" class="reactive__input" value="10" data-value="default" />
+                </div>
+                <div class="reactive__form">
+                    <label for="rem-relative" class="reactive__label">상대값 <span class="-delete">e.g, 375, 320px...</span></label>
+                    <input type="number" id="rem-relative" class="reactive__input" data-value="relative" />
+                </div>
+                <button type="button" class="reactive__button">계산하기</button>
+            </div>
+            <div class="reactive__result">
+                <span class="-offscreen">계산 결과&nbsp;</span>
+                <span class="reactive__value" data-value="result">n</span>
+                <span class="percentage__unit">px</span>
+            </div>
+        </div>
+        <div class="responsive__field" data-field="proportion">
+            <p class="responsive__title">3️⃣ proportional expression</p>
+            <p class="responsive__desc">e.g., A : B = C : <span class="-em -point">𝓍</span></p>
+            <div class="responsive__forms">
+                <div class="responsive__form">
+                    <label for="proportion-a" class="responsive__label">전항 중 외항 <span class="-delete">e.g, A</span></label>
+                    <input type="number" id="proportion-before" class="responsive__input" data-value="before" />
+                </div>
+                <div class="responsive__form">
+                    <label for="proportion-b" class="responsive__label">후항 중 내항 <span class="-delete">e.g, B</span></label>
+                    <input type="number" id="proportion-after" class="responsive__input" data-value="after" />
+                </div>
+                <div class="responsive__form">
+                    <label for="proportion-c" class="responsive__label">전항 중 내항 <span class="-delete">e.g, C</span></label>
+                    <input type="number" id="proportion-standard" class="responsive__input" data-value="standard" />
+                </div>
+                <div class="responsive__form">
+                    <label for="proportion-unknown" class="responsive__label">후항 중 외항 <span class="-delete">e.g, X</span></label>
+                    <input type="text" id="proportion-unknown" class="responsive__input" readonly="readonly" value="𝓍" />
+                </div>
+                <button type="button" class="responsive__button">계산하기</button>
+            </div>
+            <div class="responsive__result">
+                <span class="-offscreen">계산 결과&nbsp;</span>
+                <span class="responsive__value" data-value="result">n</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="jquery-3.6.0.js"></script>
+<script>
+    $('.reactive__button').on('click', function(){
+        var $this = $(this),
+            $field = $this.closest('[data-field]'),
+            $result = $field.find('[data-value="result"]');
+
+        // 1 percentage
+        if ( $field.attr('data-field') == 'percentage' ) {
+            var $standard = $field.find('[data-value="standard"]').val(),
+                $element = $field.find('[data-value="element"]').val();
+
+            $result.text(
+                ($element / $standard) * 100
+            );
+
+            // 2 root element
+        } else if ( $field.attr('data-field') == 'rem' ) {
+            var $standard = $field.find('[data-value="standard"]').val(),
+                $default = $field.find('[data-value="default"]').val(),
+                $relative = $field.find('[data-value="relative"]').val();
+
+            $result.text(
+                ($default * $relative) / $standard
+            );
+
+        } else {
+            return;
+        }
+    });
+
+    $('.responsive__button').on('click', function(){
+        var $this = $(this),
+            $field = $this.closest('[data-field]'),
+            $result = $field.find('[data-value="result"]');
+        // 1 percentage
+        if ( $field.attr('data-field') == 'percentage' ) {
+            var $standard = $field.find('[data-value="standard"]').val(),
+                $element = $field.find('[data-value="element"]').val();
+            $result.text(
+                ($element / $standard) * 100
+            );
+            // 2 root element
+        } else if ( $field.attr('data-field') == 'rem' ) {
+            var $standard = $field.find('[data-value="standard"]').val(),
+                $default = $field.find('[data-value="default"]').val(),
+                $relative = $field.find('[data-value="relative"]').val();
+            $result.text(
+                ($default * $relative) / $standard
+            );
+        } else if ( $field.attr('data-field') == 'proportion' ) {
+            var $before = $field.find('[data-value="before"]').val(),
+                $after = $field.find('[data-value="after"]').val(),
+                $standard = $field.find('[data-value="standard"]').val();
+            $result.text(
+                ($after * $standard) / $before
+            );
+        } else {
+            return;
+        }
+    });
+
+</script>
+</body>
+</html>
