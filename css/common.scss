@@ -30,15 +30,6 @@ body {
   font-size: 10px;
 }
 
-body {
-  background: url("/assets/images/chumchrum__body.png") repeat center;
-  background-size: 12%;
-
-  @media (min-width: 720px) {
-    background-size: auto;
-  }
-}
-
 a,
 button,
 input,
