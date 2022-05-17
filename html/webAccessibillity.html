@@ -1,11 +1,36 @@
-<!-- [D] 간단한 대체 텍스트 처리가 가능한 경우
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>웹접근성 예시 코드</title>
+</head>
+<body>
+
+<!-- [D] 간단한 대체 텍스트 처리가 가능한 경우//-->
 <img src="" alt="" class="-image" />
-//-->
-<!-- [D] 대체 텍스트의 양이 방대한 경우
+
+<!-- [D] 대체 텍스트의 양이 방대한 경우//-->
 <img src="" alt="" class="-image" aria-hidden="true" />
 <div class="-offscreen">
     <h1></h1>
     <p></p>
     <p></p>
 </div>
-//-->
+
+<!--
+웹접근성
+의미론적으로 읽어줘야 하면 대체 텍스트 사용하고 aria-hidden 속성 제거
+
+안읽어줘도 되는 꾸밈 요소일 경우 대체 텍스트 써도 되고 안써도 되고 선택이지만
+aria-hidden 속성 삽입해야함
+
+GA 작업 시 alt="" 필요한 경우 아무 텍스트나 써주면 됨 => 어차피 aria-hidden 속성이 있으면 해당 alt는 안읽음
+aria-hidden > alt
+<img alt=""> 빈 값으로라도 최대한 중첩해서 작성하지 않기
+-->
+
+</body>
+</html>

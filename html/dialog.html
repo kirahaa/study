@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>다이얼로그 예시</title>
+    <style>
+        .dialog {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .6);
+        }
+        .dialog.-active {
+            display: flex;
+        }
+        .dialog-document {
+            display: block;
+            overflow: hidden auto;
+            width: 50%;
+            height: 50%;
+            background-color: #fff;
+        }
+        .dialog-opener, .dialog-closer {
+            display: block;
+            background-color: rgba(0, 0, 0, .6);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<!-- [D] 다이얼로그 예시 -->
+<button type="button" class="dialog-opener" data-controls="eg-dialog">다이얼로그 열기 예시</button>
+
+<!-- [S] 다이얼로그.zip -->
+<div role="dialog" id="eg-dialog" class="dialog">
+    <div role="document" class="dialog-document">
+        <button type="button" class="dialog-closer" data-controls="eg-dialog">다이얼로그 닫힘 예시</button>
+    </div>
+</div>
+<!--// [E] 다이얼로그.zip -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // [D] 다이얼로그 예시
+        $('.dialog-opener').on('click', function () {
+            $('#' + $(this).attr('data-controls')).addClass('-active');
+        })
+
+        $('.dialog-closer').on('click', function () {
+            $(this).closest('[role="dialog"]').removeClass('-active');
+        })
+    })
+</script>
+</body>
+</html>

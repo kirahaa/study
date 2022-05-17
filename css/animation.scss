@@ -1,3 +1,8 @@
+/*
+애니메이션의 경우 대부분의 속성과 값이 크로스 브라우징에 어려움을 주기 때문에 전부 밴더 프리픽스를 달아주어야 함
+익스플로어는 금년 6월에 서비스 종료를 예정하고 있기 때문에 고려하지 않아도 무방하지만 엣지를 위해서는 전부 달아주어야 함
+*/
+
 .animation {
   animation: name alternate 0.8s infinite;
   -webkit-animation: name alternate 0.8s infinite;
