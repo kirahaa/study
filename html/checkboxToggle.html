@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>/*
+        .qwerty {
+            @this: .qwerty;
+        // &__input은 마크업에서 '.-offscreen' 옵션으로 숨겼어요
+           &__label {
+                문구 스타일
+           &:before {
+            체크마크 스타일
+            }
+                @{this}__input[aria-checked="false"] &:before {
+                체크마크 해제 스타일
+                }
+            }
+        }*/
+    </style>
+</head>
+<body>
+<input type="checkbox" id="" class="qwerty__input -offscreen" aria-checked="true" />
+<label for="" class="qwerty__label"></label>
+<script>
+    function toogleWCAG ( el, key ) {
+        el.attr( key ) == 'true' ? el.attr( key, 'false' ) : el.attr( key, 'true' );
+    }
+    $(document).ready(function(){
+        $('input[type="checkbox"]').on('click', function(){
+            toogleWCAG( $(this), 'aria-checked' );
+        });
+        $('label').on('click', function(){
+            toogleWCAG( $('#' + $(this).attr('for')), 'aria-checked' );
+        });
+    });
+</script>
+</body>
+</html>
