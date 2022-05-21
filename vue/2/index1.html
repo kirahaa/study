@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+</head>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <button id="b-button" v-bind:disabled="!canBuy">구매</button>
+    <script>
+        var vm = new Vue({
+            el: '#b-button',
+            data: {
+                canBuy: false
+            }
+        })
+    </script>
+    <!--
+        v-bind 값이 참이면 DOM 요소에 disabled 속성이 추가된다.
+        반대로 거짓이면 disabled 속성이 삭제된다.
+        참/거짓의 이진값이 그대로 넘어가는 것이 아니라 적절히 처리된 결과가 반영되는 것이다.
+        disabled=false와 같이 되는 게 아님에 주의하기 바란다.
+    -->
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>계산 프로퍼티 computed</title>
+</head>
+<body>
+    <!--
+        계산 프로퍼티는 어떤 데이터에서 파생된 데이터를 프로퍼티로 공개하는 기능으로, Vue 생성자의 옵션 객체의 한 가지이다.
+        데이터를 모종의 방법으로 처리한 값을 프로퍼티로 삼고 싶을 때 이 계산 프로퍼티를 사용하는데, 대개는 복잡한 식을 템플릿에 나타내는 용도로 사용된다.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <p>합계(세포함): {{ totalPrice }}</p>
+    </div>
+    <script>
+        var items = [
+            {
+                name: '연필',
+                price: 300,
+                quantity: 1
+            },
+            {
+                name: '공책',
+                price: 300,
+                quantity: 2
+            },
+            {
+                name: '지우개',
+                price: 500,
+                quantity: 3
+            },
+        ];
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: items
+            },
+            // 마운트 및 데이터 정의
+            computed: {
+                totalPrice: function() {
+                    // this를 통해 인스턴스 안의 데이터에 접근
+                    return this.items.reduce(function (sum, item) {
+                        return sum + (item.price * item.quantity)
+                    }, 0)
+                },
+                totalPriceWithTax: function () {
+                    // 계산 프로퍼티에 의존하는 계산 프로퍼티도 정의 가능함
+                    return Math.floor(this.totalPrice * 1.10)
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

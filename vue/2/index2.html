@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>필터</title>
+</head>
+<body>
+    <!--
+        필터는 일반적인 텍스트 포매팅 기능을 제공하며, 생성자 옵션 중 한 가지다.
+        Date 객체를 YYYY/mm/dd와 같은 포맷으로 변환하거나 숫자 0.5를 퍼센트 단위(50%)로 변환하는 경우 등에 사용한다.
+        필터는 생성자에서 옵션 filters에 인자 하나를 받는 함수 형태로 정의한다. 이 인자가 나중에 필터가 받게 될 값이 된다.
+        정의해 둔 필터는 템플릿에서 {{}} 문법과 | (파이프) 연산자를 조합해 사용한다.
+        파이프 연산자 왼쪽에 오는 값이 필터의 인자가 된다.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <p>{{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }}</p>
+        <p>필터 예제 {{1000 | numberWithDelimiter }}</p>
+    </div>
+    <script>
+        var items = [
+            {
+                name: '연필',
+                price: 300,
+                quantity: 0
+            },
+            {
+                name: '공책',
+                price: 300,
+                quantity: 0
+            },
+            {
+                name: '지우개',
+                price: 500,
+                quantity: 0
+            },
+        ]
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: items
+            },
+            filters: {  // 이번 절에서 추가한 필터 정의
+                numberWithDelimiter: function (value) {
+                    if(!value) {
+                        return '0'
+                    }
+                    return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
