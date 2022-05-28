@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>REM 연습</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 10px;
+        }
+        .chumchrum {
+            background-color: blue;
+            width: 100%;
+            height: auto;
+        }
+        .chumchrum__article {
+            width: 10rem;
+            height: 50rem;
+            background-color: dodgerblue;
+        }
+        @media (min-width: 720px) {
+            .chumchrum {
+                background-color: green;
+                width: 72rem;
+                margin: 0 auto;
+            }
+            .chumchrum__article {
+                width: 10rem;
+                height: 50rem;
+                background-color: dodgerblue;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="chumchrum">
+    <div class="chumchrum__section">
+        hello
+        <div class="chumchrum__article">
+            hihi
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
