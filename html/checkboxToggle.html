@@ -15,24 +15,30 @@
            &:before {
             체크마크 스타일
             }
-                @{this}__input[aria-checked="false"] &:before {
+                @{this}__input[aria-checked="true"] &:before {
                 체크마크 해제 스타일
                 }
             }
         }*/
+        .input { display: none; } /* checkbox */
+        .label { font-size: inherit; } /* text style */
+        .label:before {  } /* checkbox false 시, */
+        .input[aria-checked="true"] + .label:before {  } /* checkbox true 시, */
     </style>
 </head>
 <body>
-<input type="checkbox" id="" class="qwerty__input -offscreen" aria-checked="true" />
+<input type="checkbox" id="" class="qwerty__input -offscreen" aria-checked="false" />
 <label for="" class="qwerty__label"></label>
 <script>
     function toogleWCAG ( el, key ) {
         el.attr( key ) == 'true' ? el.attr( key, 'false' ) : el.attr( key, 'true' );
     }
     $(document).ready(function(){
+        // version 1
         $('input[type="checkbox"]').on('click', function(){
             toogleWCAG( $(this), 'aria-checked' );
         });
+        // version 2
         $('label').on('click', function(){
             toogleWCAG( $('#' + $(this).attr('for')), 'aria-checked' );
         });
