@@ -1,0 +1,51 @@
+
+
+.tab {
+    position: relative;
+
+    &__item {
+        display: block;
+
+        &--focused {
+            display: block;
+        }
+    }
+}
+
+.column {
+    position: relative;
+}
+
+.title {
+    font-size: 18px;
+
+    &--color-gray {
+        color: gray;
+    }
+}
+
+.form-login {
+    width: 200px;
+
+    &.--theme-normal {
+        background-color: green;
+    }
+
+    &.--theme-special {
+        background-color: pink;
+    }
+
+    &.--theme-disabled {
+        background-color: #ccc;
+    }
+
+    &__id {
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+    &__password {
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+}

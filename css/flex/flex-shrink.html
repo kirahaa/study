@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex-shrink</title>
+    <style>
+        .father {
+            display: flex;
+            /* Main Axis */
+            justify-content: space-around;
+            width: 100%;
+        }
+        .child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            background: #cf4647;
+            color: #fff;
+            font-size: 50px;
+        }
+        .child:nth-child(2) {
+            background: #000;
+            flex-shrink: 2;
+        }
+        .child:nth-child(3) {
+            background: #bbb;
+            flex-shrink: 2;
+        }
+        /*
+            flex-shrink: flex-item의 크기를 설정하는 속성
+            만약 flex-item 요소의 크기가 flex-container 요소의 크기보다 클때 flex-shrink 속성을 사용하는데,
+            설정된 숫자값에 따라 flex-container 요소 내부에서 flex-item 요소의 크기가 축소됩니다.
+            기본값 flex-shrink: 1;
+        */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="child">1</div>
+        <div class="child">2</div>
+        <div class="child">3</div>
+    </div>
+</body>
+</html>
