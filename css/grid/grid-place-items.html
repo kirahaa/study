@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>justify-items / align-items</title>
+    <style>
+        html, body {
+            font-size: 10px;
+        }
+        .grid {
+            height: 50vh;
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            place-items: stretch center;   /* x / y */
+            font-size: 3rem;
+        }
+        .header {
+            background-color: #2ecc71;
+        }
+        .content {
+            background-color: #3498db;
+        }
+        .nav {
+            background-color: #8e44ad;
+        }
+        .footer {
+            background-color: #f39c12;
+        }
+        /* fr : fraction(부분) */
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="header">header</div>
+    <div class="content">content</div>
+    <div class="nav">nav</div>
+    <div class="footer">footer</div>
+</div>
+</body>
+</html>

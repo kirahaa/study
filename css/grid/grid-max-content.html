@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid min-content / max-content</title>
+    <style>
+        html, body {
+            font-size: 10px;
+        }
+        .grid {
+            display: grid;
+            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(2rem, max-content));
+            grid-auto-rows: 10rem;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+        .item:nth-child(odd) {
+            background-color: #2ecc71;
+        }
+        .item:nth-child(even) {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="item">This is a very long text</div>
+    <div class="item">This is a very longer longer text</div>
+    <div class="item">This is a text</div>
+    <div class="item">Not long at all, or maybe, who knows? Maybe you know</div>
+    <div class="item">This is a very longer long text</div>
+</div>
+</body>
+</html>
