@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid exercise</title>
+    <style>
+        html, body {
+            font-size: 10px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(5rem, 1fr));
+            grid-template-rows: repeat(3, minmax(10rem, 20rem));
+            grid-auto-columns: 10rem;
+        }
+        .item:nth-child(1) {
+            background-color: lightpink;
+        }
+        .item:nth-child(2) {
+            background-color: darkseagreen;
+        }
+        .item:nth-child(3) {
+            background-color: cadetblue;
+        }
+        .item:nth-child(4) {
+            background-color: darksalmon;
+        }
+        .item:nth-child(5) {
+            background-color: darkorange;
+        }
+        .item:nth-child(6) {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>
