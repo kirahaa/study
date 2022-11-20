@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fetch</title>
+</head>
+<body>
+    <article>
+
+    </article>
+    <input type="button" value="fetch" onClick="
+    fetch('html').then(function(response) {
+        response.text().then(function(text) {
+            document.querySelector('article').innerHTML = text;
+        })
+    })
+    // Asynchronous 비동기(동시에 여러 코드들이 실행되는 것, 병렬적)
+    /*fetch('html').then(function(response) {
+        console.log(response, 'response')
+        if(response.status == '404') {
+            alert('Not found')
+        }
+    })*/
+    // response 응답 내용이 담겨있는 객체
+    "/>
+    <!--
+        fetch 서버에 요청하는 부분
+        then 서버
+     -->
+</body>
+</html>

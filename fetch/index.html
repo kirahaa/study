@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <article></article>
+    <ol id="nav"></ol>
+</body>
+
+<script>
+    function fetchPage(name) {
+      fetch(name).then(function(response) {
+        response.text().then(function (text) {
+          document.querySelector('article').innerHTML = text;
+        })
+      })
+    }
+    if (location.hash) {
+        fetchPage(location.hash.substr(2))
+    } else {
+        fetchPage('welcome')
+    }
+    // ajax는 검색 엔진 최적화에 취약함
+    fetch('list').then(function(response) {
+        response.text().then(function (text) {
+            var items = text.split(',');
+            var i = 0;
+            var tags = '';
+            while(i < items.length) {
+                var item = items[i];
+                item = item.trim();
+                var tag = `<li><a href="#!${item}" onClick="fetchPage('${item}')">${item}</a></li>`
+                console.log(tag)
+                tags = tags + tag;
+                i = i + 1;
+            }
+            document.querySelector('#nav').innerHTML = tags;
+        })
+    })
+</script>
+</html>
